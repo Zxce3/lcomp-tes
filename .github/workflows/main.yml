@@ -1,18 +1,16 @@
 name: "Testing yaml"
 
 on:
-	workflow_dispatch:
-	push:
-		branches:
-			- main
+  workflow_dispatch:
+    inputs:
+      custom_command:
+        description: 'Custom command'
+        required: true
 
-# Jobs
-# cat /proc/cpuinfo
-# 
 jobs:
   check-specs:
     runs-on: ubuntu-latest
     steps:
-    - name: Check CPU Specs
-      run: cat /proc/cpuinfo
+    - name: Check Specs
+      run: ${{ inputs.custom_command }}
       
